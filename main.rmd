@@ -1,0 +1,44 @@
+---
+output:
+  pdf_document: default
+  pdf_document:  default
+  html_document: default
+editor_options: 
+  markdown: 
+    wrap: sentence
+---
+
+### Laboratorio 2 - Inferencia Estadistica
+### Laboratorio Semestral
+
+### Integrantes
+
+- Gianfranco Astorga Saco
+- JeanLucas Peñaloza
+- Diego Godoy
+
+# Fecha de Entrega 
+
+- 31 Octubre del 2023
+
+### Descripción de la base de datos
+
+### Desarrollo
+
+### 1.1 Preparacion de la base de datos
+    
+```{r}
+
+# Cargar paquete readxl
+library(readxl)
+
+# Cargar base de datos
+arriendo <- read_excel("arriendo-1.xlsx") #nolint
+
+view(arriendo)
+head(arriendo)
+# nolint
+```
+
+### 1.2 
+
