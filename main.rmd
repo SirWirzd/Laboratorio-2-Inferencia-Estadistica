@@ -20,11 +20,21 @@ editor_options:
 
 - 31 Octubre del 2023
 
-### Descripción de la base de datos
+### 1. Introducción
 
-### Desarrollo
+En este laboratorio de Inferencia Estadística, nuestro objetivo es proporcionar a los usuarios de un portal inmobiliario información esencial para tomar decisiones informadas sobre alquiler de propiedades. 
+Para lograrlo, desarrollaremos un modelo estadístico que explique el precio de arriendo en función de variables como los metros cuadrados construidos, la distancia al centro urbano y la categoría de la zona. 
+A lo largo del laboratorio, exploraremos y modelaremos estos datos, evaluaremos el rendimiento del modelo y ofreceremos a los usuarios una herramienta valiosa para sus decisiones de arrendamiento.
 
-### 1.1 Preparacion de la base de datos
+### 1.1 Descripción de la base de datos
+
+La base de datos proporciona información sobre propiedades de alquiler en un portal inmobiliario. 
+Incluye variables como metros cuadrados construidos (m2), precio de arriendo en dólares, distancia al centro urbano y la categoría de la zona de la ciudad (A o B). 
+Estos datos permitirán analizar y predecir el precio de arriendo en función de diversas características de las propiedades.
+
+### 2. Desarrollo
+
+### 2.1 Preparacion de la base de datos
     
 ```{r}
 
@@ -34,10 +44,64 @@ library(readxl)
 # Cargar base de datos
 arriendo <- read_excel("arriendo-1.xlsx") #nolint
 
-#view(arriendo)
-#head(arriendo)
-# nolint
+view(arriendo)
+head(arriendo)
+#nolint
 ```
 
-### 1.2 
+### 2.2 Exploracion de la base de datos
+
+```{r}
+
+## Exploracion de la base de datos
+
+# Cargar las bibliotecas necesarias
+library(ggplot2)
+library(dplyr)
+
+# Visualización de las variables
+# Gráfico de dispersión m2 vs. Precio
+ggplot(data = arriendo, aes(x = m2, y = Precio)) +
+  geom_point() +
+  labs(x = "Metros Cuadrados Construidos (m2)", y = "Precio de Arriendo en Dólares") +
+  ggtitle("Relación entre Metros Cuadrados y Precio de Arriendo")
+
+```
+
+```{r}
+# Gráfico de barras para la categoría
+ggplot(data = arriendo, aes(x = Categoria, fill = Categoria)) +
+  geom_bar() +
+  labs(x = "Categoría", y = "Frecuencia") +
+  ggtitle("Distribución de Propiedades por Categoría")
+
+```
+
+```{r}
+
+# Estadísticas descriptivas
+summary(arriendo)
+
+# Correlación entre las variables
+correlation_matrix <- cor(arriendo[, c("m2", "Precio", "distancia")])
+print(correlation_matrix)
+
+#nolint
+```
+
+### 2.2.1 Interpretacion de la exploracion de la base de datos
+
+En el gráfico de dispersión, podemos observar que existe una relación positiva entre las variables m2 y Precio.
+En el gráfico de barras, podemos observar que la mayoría de las propiedades se encuentran en la categoría A.
+En las estadísticas descriptivas, podemos observar que la variable Precio tiene una media de 1.000 dólares y una mediana de 1.000 dólares, lo que indica que la distribución es simétrica.
+En la matriz de correlación, podemos observar que la variable m2 tiene una correlación positiva con la variable Precio, lo que indica que a medida que aumenta el número de metros cuadrados, también aumenta el precio de arriendo.
+
+Revisar y completar
+
+### 2.3 
+
+
+
+
+### 3. Conclusiones
 
