@@ -53,8 +53,8 @@ library(readxl)
 # Cargar base de datos
 arriendo <- read_excel("arriendo-1.xlsx") #nolint
 
-view(arriendo)
-head(arriendo)
+#view(arriendo)
+#head(arriendo)
 #nolint
 ```
 
