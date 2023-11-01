@@ -1,6 +1,7 @@
 ---
 output:
   pdf_document: default
+  latex_engine: xelatex
   html_document: default
 editor_options: 
   markdown: 
@@ -142,7 +143,7 @@ Variable Independiente: m2 (Metros Cuadrados Construidos)
 
 El modelo se representa de la siguiente manera:
 
-- Precio = β0 + β1 * m2 + ε"
+- Precio = B0 + B01 * m2 + E
 
 - Precio = 0,999 * m2 + 0,999
 
@@ -150,9 +151,9 @@ Donde:
 
 - Precio: Precio de Arriendo que queremos predecir.
 - m2: Metros Cuadrados Construidos de la propiedad.
-- β0: Intercepto (constante) del modelo.
-- β1: Coeficiente que representa la relación entre los metros cuadrados construidos y el precio de arriendo.
-- ε: Error aleatorio.
+- B0: Intercepto (constante) del modelo.
+- B1: Coeficiente que representa la relación entre los metros cuadrados construidos y el precio de arriendo.
+- E: Error aleatorio.
 
 Este modelo permite predecir el precio de arriendo en función de los metros cuadrados construidos.
 La variable "m2" es la variable explicativa, ya que se utiliza para explicar las variaciones en el precio de arriewndo.
@@ -160,14 +161,14 @@ que es la variable dependiente en la que estamos interesados.
 
 ### 2.5 EL modelo ajustado de regresion lineal
 
-Precio = β0 + β1 * m2
+Precio = B0 + B1 * m2
 
 # Interpretacmos los coeficientes del modelo ajustado de regresion lineal.
 
-- β0 (Intercepto): En este modelo, el intercepto (constante) β0 es 255.12651. Representa el precio de arriendo esperado cuando los metros cuadrados construidos (m2) son cero. 
+- B0 (Intercepto): En este modelo, el intercepto (constante) B0 es 255.12651. Representa el precio de arriendo esperado cuando los metros cuadrados construidos (m2) son cero. 
 Sin embargo, en el contexto inmobiliario, un valor de cero para los metros cuadrados construidos no tiene un significado práctico, por lo que esta interpretación puede no ser relevante en la práctica.
 
-- β1 (Coeficiente de m2): El coeficiente β1 es 7.72037. Representa el cambio en el precio de arriendo en dólares por cada metro cuadrado adicional construido. 
+- B1 (Coeficiente de m2): El coeficiente 1 es 7.72037. Representa el cambio en el precio de arriendo en dólares por cada metro cuadrado adicional construido. 
 En otras palabras, por cada metro cuadrado adicional de espacio en la propiedad, el precio de arriendo se espera que aumente en promedio en $7.72037.
 
 Cabe destacar que el modelo de regresión lineal ajustado sugiere que los metros cuadrados son una variable importante para predecir el precio de arriendo.
@@ -208,16 +209,16 @@ El gráfico de dispersión muestra una relación lineal positiva entre las varia
 
 ### 2.7 Investigación del coeficiente de determinación lineal
 
-El coeficiente de determinación lineal, representado como "R²" o "R-cuadrado", es una medida estadística que indica la proporción de la variabilidad en la variable dependiente (en este caso, el precio de arriendo) que es explicada por el modelo de regresión lineal. 
+El coeficiente de determinación lineal, R^2, es una medida estadística que indica la proporción de la variabilidad en la variable dependiente (en este caso, el precio de arriendo) que es explicada por el modelo de regresión lineal. 
 En otras palabras, R² mide la bondad de ajuste del modelo, indicando cuánto de la variabilidad del precio de arriendo se puede atribuir a las variables independientes incluidas en el modelo.
 
-- Si R² es igual a 1, significa que el modelo explica el 100% de la variabilidad en la variable dependiente, lo que indica un ajuste perfecto.
+- Si R^2 es igual a 1, significa que el modelo explica el 100% de la variabilidad en la variable dependiente, lo que indica un ajuste perfecto.
 
-- Si R² es igual a 0, significa que el modelo no explica ninguna de la variabilidad en la variable dependiente, lo que indica que el modelo no es útil para hacer predicciones.
+- Si R^2 es igual a 0, significa que el modelo no explica ninguna de la variabilidad en la variable dependiente, lo que indica que el modelo no es útil para hacer predicciones.
 
 En el contexto de tu problema, el valor de R² que has reportado (0.6364) significa que el modelo de regresión lineal que has ajustado explica el 63.64% de la variabilidad en el precio de arriendo. 
 Esto sugiere que el modelo tiene un buen ajuste a los datos y que la variable "m2" (metros cuadrados construidos) es una variable relevante para predecir el precio de arriendo. Sin embargo, aún queda un 36.36% de la variabilidad sin explicar, 
-lo que podría deberse a la influencia de otras variables no incluidas en el modelo o al ruido inherente a los datos. En resumen, un R² de 0.6364 indica una relación significativa entre "m2" y el precio de arriendo, pero no explica la variabilidad por completo.
+lo que podría deberse a la influencia de otras variables no incluidas en el modelo o al ruido inherente a los datos. En resumen, un R^2 de 0.6364 indica una relación significativa entre "m2" y el precio de arriendo, pero no explica la variabilidad por completo.
 
 ### 2.8 Investigación de los gráficos cuantil-cuantil
 
@@ -231,14 +232,14 @@ indica que los datos se distribuyen normalmente.
 
 # Instalar el paquete "qqplot"
 
-install.packages("qqplot")
+#install.packages("qqplot")
 
 ```
 
 ```{r}
 # Cargamos la biblioteca qqplot
 
-library(qqplot)
+#library(qqplot)
 
 ```
 
@@ -330,16 +331,16 @@ Luego, utilizaremos pruebas estadísticas para evaluar estas hipótesis.
 
 - ¿El precio promedio de arriendo ha aumentado en comparación con $970?
 
-Hipótesis (H0): El precio promedio de arriendo es igual a $970 (μ = 970).
-Hipótesis (H1): El precio promedio de arriendo es diferente de $970 (μ ≠ 970).
+Hipótesis (H0): El precio promedio de arriendo es igual a $970 (u = 970).
+Hipótesis (H1): El precio promedio de arriendo es diferente de $970 (u =/ 970).
 
 Para realizar esta prueba de hipótesis, utilizaremos una prueba t de una muestra, ya que queremos comparar la media de una muestra con un valor específico (970).
 
 ```{r}
 
 # Prueba t de una muestra para la pregunta 8
-# H0: μ = 970 # nolint
-# H1: μ ≠ 970 # nolint
+# H0: u = 970 # nolint
+# H1: u =/ 970 # nolint
 # Realizamos la prueba t de una muestra
 
 resultado_prueba <- t.test(arriendo$Precio, mu = 970)
@@ -355,8 +356,8 @@ El resultado de la prueba t de una muestra para la pregunta 8 es el siguiente:
 - Grados de libertad (df): 38
 - Valor p (p-value): 0.1515
 
-Esto corresponde a la hipótesis nula (H0) que establece que la media del precio de arriendo (μ) es igual a 970. 
-La hipótesis alternativa (H1) sugiere que μ no es igual a 970.
+Esto corresponde a la hipótesis nula (H0) que establece que la media del precio de arriendo (u) es igual a 970. 
+La hipótesis alternativa (H1) sugiere que u no es igual a 970.
 
 Dado que el valor p (p-value) es 0.1515, y es mayor que el nivel de significancia típico de 0.05 para una confianza del 95%, no tenemos evidencia suficiente para rechazar la hipótesis nula. 
 En otras palabras, no podemos afirmar que el precio promedio de arriendo sea diferente de $970.
@@ -368,16 +369,16 @@ Esto significa que con un 95% de confianza, podemos afirmar que la media del pre
 
 - ¿El promedio del precio de arriendo es distinto según la zona de la ciudad?
 
-Hipótesis (H0): El promedio del precio de arriendo es igual en ambas zonas (μ_A = μ_B).
-Hipótesis (H1): El promedio del precio de arriendo es diferente en al menos una de las zonas (μ_A ≠ μ_B).
+Hipótesis (H0): El promedio del precio de arriendo es igual en ambas zonas (u_A = u_B).
+Hipótesis (H1): El promedio del precio de arriendo es diferente en al menos una de las zonas (u_A =/ u_B).
 
 Para realizar esta prueba de hipótesis, utilizaremos una prueba t de dos muestras, ya que queremos comparar las medias de dos muestras (zona A y zona B).
 
 ```{r}  
 
 # Prueba t de dos muestras para la pregunta 9
-# H0: μ_A = μ_B # nolint
-# H1: μ_A ≠ μ_B # nolint
+# H0: u_A = u_B # nolint
+# H1: u_A =/ u_B # nolint
 
 # Realizamos la prueba t de dos muestras
 
@@ -397,7 +398,7 @@ El resultado de la prueba t de dos muestras para la pregunta 9 es el siguiente:
 - Grados de libertad (df): 36.687
 - Valor p (p-value): 0.8887
 
-Esto corresponde a la hipótesis nula (H0) que establece que las medias de los precios de arriendo en las zonas A y B (μ_A y μ_B) son iguales. 
+Esto corresponde a la hipótesis nula (H0) que establece que las medias de los precios de arriendo en las zonas A y B (u_A y u_B) son iguales. 
 La hipótesis alternativa (H1) sugiere que las medias no son iguales.
 
 Dado que el valor p (p-value) es 0.8887, y es mucho mayor que el nivel de significancia típico de 0.05 para una significancia del 5%, no tenemos evidencia suficiente para rechazar la hipótesis nula. 
@@ -408,7 +409,14 @@ Esto significa que con un 95% de confianza, podemos afirmar que la diferencia en
 
 ### 3. Conclusiones
 
-Gracias a la base de datos se pudo analizar el comportamiento de las variables que evaluarían el comportamiento del precio del arriendo  en ciertas zonas, 
-este análisis se hizo con la ayuda del Software de Rstudio con el cual se pudo graficar en los casos correspondientes como las variables estaban relacionadas con cada una, 
-así como proponer modelos para la variable que se considere importante a la hora de estimar los precios de arriendos, para luego dar una breve explicación de como funciona
-el coeficiente de determinación lineal, así como el test de bondad, test de normalidad y como aplicarlos al problema y por ultimo se realizaron pruebas de hipótesis.
+Para concluir el presenta laboratorio, se puede decir que se logró realizar el laboratorio de acuerdo a lo solicitado, se logró responder las preguntas propuestas y se logró aplicar los conocimientos obtenidos en clase.
+
+Por otro lado, en base a lo resultados obtenidos en el presente laboratorio, se puede concluir que el modelo de regresión lineal ajustado sugiere que los metros cuadrados son una variable importante para predecir el precio de arriendo. 
+También se puede concluir que el modelo de regresión lineal ajustado sugiere que los metros cuadrados son una variable importante para predecir el precio de arriendo. Cada metro cuadrado adicional construido se espera que aumente el precio de arriendo en promedio en $7.72037. 
+El intercepto del modelo no tiene un significado práctico en el contexto inmobiliario, ya que un valor de cero para los metros cuadrados construidos no tiene un significado práctico.
+
+### 4. Referencias
+
+- https://www.statisticshowto.com/probability-and-statistics/t-test/
+- https://rstudio.com/
+- https://rmarkdown.rstudio.com/
